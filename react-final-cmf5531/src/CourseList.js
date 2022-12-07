@@ -2,8 +2,43 @@ import React from "react";
 
 import {Table} from 'reactstrap';
 
+import UpdatePage from "./UpdatePage";
 
-const CourseList = (props) => {
+
+class CourseList extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      modalStatus : false,
+      newCourse : ' ',
+      newTitle : ' ',
+      newDetails : ' '
+    }
+  }
+
+  toggle=()=>{
+    this.setState({modalStatus : !this.state.modalStatus})
+  }
+
+  updateCourse = (course) => {
+    this.setState({newCourse : course})
+  }
+
+  updateTitle = (title) => {
+    this.setState({newTitle : title})
+  }
+
+  updateDetails = (detail) => {
+    this.setState({newDetails : detail})
+  }
+
+  clearAll = () =>{
+    this.setState({newCourse : ' ', newTitle : ' ', newDetails : ' '})
+    this.toggle()
+  }
+
+
+  render(){
       return (
         <Table striped dark>
           <thead>
@@ -18,11 +53,17 @@ const CourseList = (props) => {
             </tr>
           </thead>
             <tbody>
-          {props.classes.map((course) => {
+          {this.props.classes.map((course) => {
+
             return (
                 <tr>
-                    <th scope = "row"><button id = 'deleteButton' onClick = {() => props.deleteButton(course[0])}>Delete</button></th>
-                    {/* <th scope = "row"><UpdatePage></UpdatePage></th> */}
+                    <th scope = "row"><button id = 'deleteButton' onClick = {() => this.props.deleteButton(course[0])}>Delete</button></th>
+                    <th scope = "row"><button onClick = {() => this.toggle()}>Update</button>
+                      <UpdatePage modalStatus = {this.state.modalStatus} updateCourse = {this.updateCourse} updateTitle = {this.updateTitle}
+                    updateDetails = {this.updateDetails} newCourse = {this.state.course} newTitle = {this.state.newTitle}
+                    newDetails = {this.state.newDetails} department = {course[5]} college = {course[6]} toggle = {this.toggle}
+                    cancel = {this.props.clearAll} commit = {this.commit} id = {course[0]}
+                    ></UpdatePage></th>
                     <th scope="row">{course[0]}</th>
                     <td>{course[4]}</td>
                     <td>{course[1]}</td>
@@ -37,5 +78,6 @@ const CourseList = (props) => {
         </Table>
       );
     }
+  }
 
 export default CourseList;

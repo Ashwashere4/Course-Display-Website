@@ -19,7 +19,7 @@ def rebuildTables():
     conn.close()
     
 def getCourses():
-    result = exec_get_all('SELECT id, c_number, c_title, c_details, dept_id FROM courses')
+    result = exec_get_all('select courses.id, c_number, c_title, c_details, dept_id, department.name, college.name FROM courses inner join department ON department.id = courses.dept_id inner join college ON college.id = department.college_id order by id asc')
     
     return result
     

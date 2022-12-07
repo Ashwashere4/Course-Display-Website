@@ -20,9 +20,8 @@ class App extends React.Component{
 
     }
 
-  
-    deleteCourse(primaryId){
-      fetch(`http://127.0.0.1:5000/courses/${primaryId}`, {method:"DELETE"})
+    deleteCourse(primaryid){
+      fetch(`http://127.0.0.1:5000/courses/${primaryid}`, {method:"DELETE"})
     }
 
     updateCourse(primaryId, c_number, c_title, c_details){
@@ -38,7 +37,7 @@ class App extends React.Component{
   return (
     <div>
       <CourseList
-      classes = {this.state.database} deleteButton = {this.deleteCourse}></CourseList>
+      classes = {this.state.database} deleteButton = {this.deleteCourse} commit = {this.updateCourse}></CourseList>
     </div>
   );
   }

@@ -31,7 +31,7 @@ class GetCourses(Resource):
     
 class UpdateCourse(Resource):
     
-    def post(primaryID):
+    def post(self, primaryID):
         
         
         if primaryID != None:
@@ -51,9 +51,10 @@ class UpdateCourse(Resource):
             
 class DeleteCourse(Resource):
     
-    def delete(primaryid):
+    def delete(self, primaryid):
         
-        if primaryid != None:
+        print(primaryid)
+        if (primaryid != None):
             restapi.deleteCourse(primaryid)
             return ("Course Deleted", 202)
         
