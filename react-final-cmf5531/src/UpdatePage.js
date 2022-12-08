@@ -1,6 +1,6 @@
 import React from "react";
 
-import {Modal, ModalBody, ModalHeader, InputGroup, InputGroupText, Input, ModalFooter, Button} from 'reactstrap';
+import {Modal, ModalBody, ModalHeader, ModalFooter, Button, Form, FormGroup, Input, Label} from 'reactstrap';
 
 
 
@@ -10,22 +10,24 @@ class UpdatePage extends React.Component{
             <Modal isOpen={this.props.modalStatus} toggle={this.props.toggle}>
             <ModalHeader toggle={this.props.toggle}>{this.props.college}, {this.props.department}</ModalHeader>
                 <ModalBody>
-                    <InputGroup>
-                        <InputGroupText>Course</InputGroupText>
-                        <Input placeholder="Courses"  onChange={this.props.updateCourse(this.value)}/>
-                        </InputGroup>
-                    <InputGroup>
-                        <InputGroupText>Title</InputGroupText>
-                        <Input placeholder="Title"  onChange={this.props.updateTitle(this.value)}/>
-                    </InputGroup>
-                    <InputGroup>
-                        <InputGroupText>Details</InputGroupText>
-                        <Input placeholder="Details"  onChange={this.props.updateDetails(this.value)}/>
-                    </InputGroup>
+                    <Form>
+                        <FormGroup>
+                            <Label for="course" sm={2}>Course</Label>
+                            <Input type="Course" name="Course" id="course" placeholder="Course name" value = {this.props.newCourses} onChange = {(e) => this.props.updateCourse(e.target.value)} />
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="title" sm={2}>Title</Label>
+                            <Input type="Title" name="Title" id="title" placeholder="Title name" value = {this.props.newTitle} onChange = {(e) => this.props.updateTitle(e.target.value)}/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label for="detail" sm={2}>Detail</Label>
+                            <Input type="Detail" name="Detail" id="detail" placeholder="Detail name" value = {this.props.newDetails} onChange = {(e) => this.props.updateDetails(e.target.value)}/>
+                        </FormGroup>
+                    </Form>
                 </ModalBody>
                 <ModalFooter>
-                        <Button color="secondary" onClick={this.props.cancel}>Cancel</Button>
-                        <Button color="primary" onClick= {() => this.props.commit(this.props.id, this.props.course, this.props.title, this.props.details)}>Save</Button>
+                        <Button color="secondary" onClick={() => this.props.cancel()}>Cancel</Button>
+                        <Button color="primary" onClick= {() => this.props.commit(this.props.id)}>Save</Button>
                 </ModalFooter>
             </Modal>
         )

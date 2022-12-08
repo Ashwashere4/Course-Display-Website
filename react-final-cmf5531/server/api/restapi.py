@@ -27,5 +27,5 @@ def getCourses():
 def deleteCourse(primaryid):
     exec_commit('DELETE FROM courses WHERE id = %s', [primaryid])
     
-def updateCourse(primaryID, c_number, c_title, c_details):
-    exec_commit('UPDATE courses SET c_number = %s, c_title = %s, c_details = %s WHERE id = %s', [c_number, c_title, c_details, primaryID])
+def updateCourse(primaryid, c_number, c_title, c_details):
+    exec_commit('UPDATE courses SET c_number = %s, c_title = %s, c_details = %s WHERE id = %s', [c_number, c_title, c_details, primaryid])

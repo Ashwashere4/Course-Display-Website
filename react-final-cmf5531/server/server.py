@@ -11,7 +11,7 @@ api = Api(app) #api router
 
 
 api.add_resource(GetCourses, "/courses")
-api.add_resource(UpdateCourse, "/courses/<int:primaryId>")
+api.add_resource(UpdateCourse, "/courses/<int:primaryid>")
 api.add_resource(DeleteCourse, "/courses/<int:primaryid>")
 
 

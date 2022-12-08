@@ -31,18 +31,18 @@ class GetCourses(Resource):
     
 class UpdateCourse(Resource):
     
-    def post(self, primaryID):
+    def put(self, primaryid):
         
         
-        if primaryID != None:
+        if primaryid != None:
             parser = reqparse.RequestParser()
             parser.add_argument('c_number', type = str)
             parser.add_argument('c_title', type = str)
             parser.add_argument('c_details', type = str)
             
-            args = parser.parse_args
+            args = parser.parse_args()
             
-            restapi.updateCourse(primaryID, args['c_number'], args['c_title'], args['c_details'])
+            restapi.updateCourse(primaryid, args['c_number'], args['c_title'], args['c_details'])
             
             return("Course Updated!", 202)
         
