@@ -1,6 +1,7 @@
 # Course-Display-Website
 
 Author: Caden "Ash" Franklin
+
 Purpose: SWEN 344 Final
 
 Description:
@@ -10,7 +11,7 @@ Typical frontend backend releationship.
 Technologies Used:
 Python
 SQL
-REACT
+REACT.js
 
 
 
